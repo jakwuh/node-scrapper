@@ -1,7 +1,7 @@
 {
   "name": "node-scrapper",
   "version": "0.0.0",
-  "description": "Page scrapper based on webdriver",
+  "description": "Non-blocking node.js scrapper",
   "repository": "git@github.com:jakwuh/node-scrapper.git",
   "main": "lib/index.js",
   "scripts": {
