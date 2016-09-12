@@ -3,19 +3,20 @@ import {Spider} from './Spider';
 import chalk from 'chalk';
 import co from 'co';
 
-export function crawl(callback) {
+export function crawl(callback, options) {
+
+    options = Object.assign({
+        desiredCapabilities: {
+            browserName: 'chrome'
+        },
+        host: 'localhost',
+        port: 4444
+    }, options);
+
+    let browser = remote(options);
+    let spider = new Spider(browser);
 
     return co(function*() {
-
-        let options = {
-            desiredCapabilities: {},
-            host: 'localhost',
-            port: 4444
-        };
-
-        let browser = remote(options);
-        let spider = new Spider(browser);
-
         yield browser.init();
 
         callback(spider);
@@ -28,6 +29,8 @@ export function crawl(callback) {
 
     }).catch(err => {
         console.trace(chalk.bold.red(err));
+    }).then(() => {
+        browser.end();
     });
 
 }
