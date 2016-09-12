@@ -6,6 +6,7 @@
   "scripts": {
     "build": "babel -s inline --presets es2015,stage-0 -d lib src",
     "start": "babel -s inline --presets es2015,stage-0 -d lib -w src",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jakwuh <jakwuh@yandex-team.ru>",
